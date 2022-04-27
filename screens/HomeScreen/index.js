@@ -1,23 +1,43 @@
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-
+import { useState } from 'react';
+import { View, TouchableOpacity, Text, StyleSheet, FlatList } from 'react-native';
+import { useSelector,useDispatch } from 'react-redux'
 import { Nav, Card } from '../../components';
+import { ADD_BAND } from "../../store/actions/bands.action";
+import { uuidv4 } from '../../utils/utils';
 
 const HomeScreen = ({navigation}) => { 
+  const Bands = useSelector(state => state);
+  const dispatch = useDispatch()
 
+  const handleAdd = () => {
+    const newID = uuidv4();
+    const newItem = {id: newID, name: newID}
+    dispatch({type: ADD_BAND, payload: newItem})
+  }
   return (
     <View >
       <Nav/>
       <View>
         <Text style={styles.title}>
-          Buy products
+          Your Bands
         </Text>
+        <View>
+          <TouchableOpacity onPress={handleAdd}>
+            <Text style={styles.title}>Add new </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <TouchableOpacity >
-        <Card text="Product 1"/>
-      </TouchableOpacity>
-      <TouchableOpacity >
-        <Card text="Product 2"/>
-      </TouchableOpacity>
+      <View>
+        <FlatList 
+          data={Bands.bands}
+          renderItem={ data => (
+            <TouchableOpacity>
+              <Card text={data.item.name} key={data.item.id}/>
+            </TouchableOpacity>
+          )}
+          keyExtractor= {(item) => item.id}
+        />
+      </View>
     </View>
   )
 }

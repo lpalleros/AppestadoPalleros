@@ -8,7 +8,7 @@ export default function Nav() {
   return (
     <View style={styles.container}>
       <FontAwesome name='bars' color="#fff" size={22} />
-      <Text style={styles.title}>Tabs Navigations</Text>
+      <Text style={styles.title}>React Redux</Text>
     </View>
   )
 }

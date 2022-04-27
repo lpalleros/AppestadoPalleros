@@ -29,8 +29,8 @@ export default function App() {
               {
                 tabBarIcon: ({focused}) => (
                   <View style={styles.items}>
-                    <FontAwesome name='cart-plus' size={16} color="black" />
-                    <Text>Buy</Text>
+                    <FontAwesome name='music' size={16} color="black" />
+                    <Text>Bands</Text>
                   </View>
                 )
               }

@@ -4,7 +4,7 @@ const initialState = {
   bands: [
     {
       id: "814589e7-edb4-446f-9093-8a21b3ae0c5a",
-      name: 'text1',
+      name: 'The Rolling Stones',
     },
   ]
 };
